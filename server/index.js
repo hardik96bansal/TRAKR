@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
 const ParentRouter = require('./router/parent.router')
+const AdminRouter = require('./router/admin.router')
 const Config = require('./common/config')
 
 const hostname = Config.hostname;
@@ -19,7 +20,9 @@ app.use(morgan('dev'))
 app.get('/', (req,res) => {
     res.send('Hi')
 })
+
 ParentRouter.routerConfig(app)
+AdminRouter.routerConfig(app)
 
 server.listen(port, hostname, () => {
     console.log(`Server listening on ${hostname}:${port}`);
